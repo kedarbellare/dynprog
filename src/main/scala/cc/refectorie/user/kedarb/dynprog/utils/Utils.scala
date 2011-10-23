@@ -130,16 +130,7 @@ object Utils {
 
   def fmt(x: Int): String = x.toString
 
-  def fmt(x: Double): String = {
-    if ((x - x.toInt).abs < 1e-40) // An integer (probably)
-      x.toInt.toString
-    else if (x.abs < 1e-3) // Scientific notation (close to 0)
-      String.format("%.2e", x: java.lang.Double)
-    else if (x.abs > 1e3) // Scientific notation (large)
-      String.format("%.2e", x: java.lang.Double)
-    else
-      String.format("%.3f", x: java.lang.Double)
-  }
+  def fmt(x: Double): String = "%.3f".format(x)
 
   def fmt(x: Any): String = x match {
     case a: Boolean => fmt(a)
